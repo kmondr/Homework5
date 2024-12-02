@@ -1,0 +1,25 @@
+# Variables
+CC = gcc
+CFLAGS1 = -Wall -std=c99 -c
+CFLAGS2 = -std=c99 -s
+
+# Targets
+all: a.exe
+
+a.exe: iom361_r2.o HW5_problem1.o AHT20_BST.o float_rndm.o
+	$(CC) $(CFLAGS2) iom361_r2.o HW5_problem1.o AHT20_BST.o float_rndm.o -o a.exe
+
+iom361_r2.o: iom361_r2.c
+	$(CC) $(CFLAGS1) iom361_r2.c -o iom361_r2.o
+
+HW5_problem1.o: HW5_problem1.c
+	$(CC) $(CFLAGS1) HW5_problem1.c -o HW5_problem1.o
+
+AHT20_BST.o: AHT20_BST.c
+	$(CC) $(CFLAGS1) AHT20_BST.c -o AHT20_BST.o
+
+float_rndm.o: float_rndm.c
+	$(CC) $(CFLAGS1) float_rndm.c -o float_rndm.o
+
+clean:
+	rm -f *.o a.exe
